@@ -1,0 +1,60 @@
+        <form class="mt-20 mx-20 my-12 px-20 py-15 bg-cyan-50 rounded-3xl shadow-black">
+            <h3 class="py-5 relative font-semibold mt-5 text-xl from-stone-600">Add a Link</h3>
+        
+            <div class="my-4">
+              <label class="block font-bold" for="title">
+                <span class="text-gray-700"> Title</span> </label>
+              <input
+                type="text"
+                class="form-input px-12 py-1 rounded text-black block border-blue-500 flex-grow"
+                id="title"
+                placeholder="title"
+                #newtitle
+              />
+            </div>
+        
+            <div class="my-4">
+              <label class="block font-bold" for="link">
+                <span class="text-gray-700">Link</span>
+            </label>
+                <input
+                  type="text"
+                  id="link"
+                  class="form-input flex-grow px-12 py-1 rounded text-black block border-blue-500"
+                  placeholder="business"
+                  #newlink 
+                />
+              
+            </div>
+        
+            <div class="flex justify-end">
+              <button (click)="addArticle(newtitle, newlink)"
+        class="my-4  border-2 border-black bg-slate-800 text-white font-semibold text-center px-8 py-1 rounded-sm hover:bg-black justify-self-end ">
+        Submit link
+        </button>
+            </div>
+          
+          </form>
+          
+          <div class=" px-5 flex flex-col justify-start">
+            <app-article *ngFor="let item of sortedArticles() " [article]="item"> </app-article>
+          </div>
+        
+         <div class="flex flex-col ">
+          <div class="bg-slate-800 text-white flex justify-center">{{val}}</div>
+          <button class="bg-red-500" (click)=increase()>Increase</button>
+          <button class="bg-blue-500" (click)=decrease()>Decrease</button>
+         </div>
+  
+         /** @type {import('tailwindcss').Config} */
+         module.exports = {
+           content: [
+             "./src/**/*.{html,ts}",
+           ],
+           theme: {
+             extend: {},
+           },
+           plugins: [
+             require('@tailwindcss/forms')
+           ],
+         }
